@@ -1,0 +1,50 @@
+{
+    "type": "object",
+    "properties": {
+        "uuid": {
+            "type": "string"
+        },
+        "timestamp": {
+            "type": "string"
+        },
+        "status": {
+            "type": "string",
+            "enum": [
+                "wait",
+                "done",
+                "fail"
+            ]
+        },
+        "error": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "none",
+                        "unknown",
+                        "system"
+                    ]
+                }
+            },
+            "required": [
+                "code",
+                "text"
+            ]
+        }
+    },
+    "required": [
+        "uuid",
+        "timestamp",
+        "error"
+    ]
+}

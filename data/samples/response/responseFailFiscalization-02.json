@@ -1,0 +1,17 @@
+{
+    "callback_url": "https://example.com",
+    "daemon_code": "quasar",
+    "device_code": "KKT000132",
+    "warnings": null,
+    "error": {
+        "code": 2009,
+        "text": "ИНН, указанный в чеке 1234567891, не соответствует ИНН группы касс 5544332219. Попыток регистрировать чек не производилось.",
+        "type": "agent"
+    },
+    "external_id": "v4-online-atol-ru_4179681132",
+    "group_code": "v4-online-atol-ru_4179",
+    "payload": null,
+    "status": "fail",
+    "uuid": "f0269dc9-3050-470a-9542-d9c20bf103a3",
+    "timestamp": "27.01.2024 22:58:45"
+}

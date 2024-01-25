@@ -1,0 +1,61 @@
+{
+  "external_id": "17052917561851307",
+  "receipt": {
+    "client": {
+      "email": "kkt@kkt.ru"
+    },
+    "company": {
+      "email": "chek@romashka.ru",
+      "sno": "osn",
+      "inn": "1234567891",
+      "payment_address": "http://magazin.ru/"
+    },
+    "items": [
+      {
+        "name": "колбаса Клинский Брауншвейгская с/к в/с ",
+        "price": 1000.00,
+        "quantity": 0.3,
+        "sum": 300.00,
+        "measurement_unit": "кг",
+        "payment_method": "full_payment",
+        "payment_object": "commodity",
+        "vat": {
+          "type": "vat20"
+        }
+      },
+      {
+        "name": "яйцо Окское куриное С0 белое",
+        "price": 100.00,
+        "quantity": 1.0,
+        "sum": 100.00,
+        "measurement_unit": "Упаковка 10 шт.",
+        "payment_method": "full_payment",
+        "payment_object": "commodity",
+        "vat": {
+          "type": "vat10"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": 1,
+        "sum": 400.0
+      }
+    ],
+    "vats": [
+      {
+        "type": "vat20",
+        "sum": 45.76
+      },
+      {
+        "type": "vat10",
+        "sum": 9.09
+      }
+    ],
+    "total": 400.0
+  },
+  "service": {
+    "callback_url": "http://testtest"
+  },
+  "timestamp": "01.02.2017 13:45:00"
+}

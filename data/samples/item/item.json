@@ -1,0 +1,9 @@
+{
+    "name": "колбаса Клинский Брауншвейгская с/к в/с ",
+    "price": 1000.00,
+    "quantity": 0.3,
+    "sum": 300.00,
+    "measurementUnit": "кг",
+    "paymentMethod": "full_payment",
+    "paymentObject": "commodity"
+}

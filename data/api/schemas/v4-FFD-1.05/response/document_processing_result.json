@@ -1,0 +1,135 @@
+{
+  "type": "object",
+  "properties": {
+    "uuid": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string"
+    },
+    "group_code": {
+      "type": "string"
+    },
+    "daemon_code": {
+      "type": "string"
+    },
+    "device_code": {
+      "type": "string"
+    },
+    "external_id": {
+      "type": "string"
+    },
+    "callback_url": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "wait",
+        "done",
+        "fail"
+      ]
+    },
+    "error": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "code": {
+          "type": "integer"
+        },
+        "text": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "none",
+            "unknown",
+            "system",
+            "driver",
+            "timeout",
+            "agent"
+          ]
+        }
+      },
+      "required": [
+        "code",
+        "text"
+      ]
+    },
+    "warnings": {
+      "type": "object",
+      "properties": {
+        "callback_url": {
+          "type": "string",
+          "enum": [
+            "callback_url не соответствует маске"
+          ]
+        }
+      }
+    },
+    "payload": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "fiscal_receipt_number": {
+          "type": "integer"
+        },
+        "shift_number": {
+          "type": "integer"
+        },
+        "receipt_datetime": {
+          "type": "string"
+        },
+        "total": {
+          "type": "number"
+        },
+        "fn_number": {
+          "type": "string"
+        },
+        "ecr_registration_number": {
+          "type": "string"
+        },
+        "fiscal_document_number": {
+          "type": "integer"
+        },
+        "fiscal_document_attribute": {
+          "type": "integer"
+        },
+        "fns_site": {
+          "type": "string"
+        },
+        "ofd_inn": {
+          "type": "string"
+        },
+        "ofd_receipt_url": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "fiscal_receipt_number",
+        "shift_number",
+        "receipt_datetime",
+        "total",
+        "fn_number",
+        "ecr_registration_number",
+        "fiscal_document_number",
+        "fiscal_document_attribute",
+        "fns_site"
+      ]
+    }
+  },
+  "required": [
+    "uuid",
+    "timestamp",
+    "error",
+    "payload",
+    "group_code",
+    "daemon_code",
+    "device_code"
+  ]
+}

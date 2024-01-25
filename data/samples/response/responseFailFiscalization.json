@@ -1,0 +1,11 @@
+{
+    "error": {
+        "error_id": "475d6d8d-844d-4d05-aa8b-e3dbdf4defd6",
+        "code": 34,
+        "text": "Состояние чека не найдено. Попробуйте позднее",
+        "type": "system"
+    },
+    "status": "wait",
+    "timestamp": "12.04.2017 18:58:38",
+    "callback_url": ""
+}
