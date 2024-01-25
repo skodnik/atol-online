@@ -1,0 +1,15 @@
+vendor
+composer.lock
+
+# php-cs-fixer config
+.php-cs-fixer.php
+
+# php-cs-fixer cache
+.php_cs.cache
+.php-cs-fixer.cache
+
+# PHPUnit
+.phpunit.result.cache
+
+# misc
+http-client.private.env.json

@@ -1,0 +1,1 @@
+{"status":"fail","error":{"code":32,"error_id":"80971fda-4201-4997-a22a-2b76b8289882","text":"Ошибка валидации входящего чека. Ошибочные поля : PatternMismatch: #/login","type":"system"},"timestamp":"24.01.2024 22:21:49"}

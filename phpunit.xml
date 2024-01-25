@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+>
+    <testsuites>
+        <testsuite name="Feature">
+            <directory>tests/Feature</directory>
+        </testsuite>
+        <testsuite name="Integration">
+            <directory>tests/Integration</directory>
+        </testsuite>
+        <testsuite name="Unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <env name="ATOL_TEST_HOST" value="https://testonline.atol.ru/possystem"/>
+        <env name="ATOL_SERVICE_VERSION" value="v4"/>
+        <env name="ATOL_COMPANY" value="АТОЛ"/>
+        <env name="ATOL_INN" value="5544332219"/>
+        <env name="ATOL_GROUP_CODE" value="v4-online-atol-ru_4179"/>
+        <env name="ATOL_LOGIN" value="v4-online-atol-ru"/>
+        <env name="ATOL_PASSWORD" value="iGFFuihss"/>
+        <env name="ATOL_EMAIL" value="test@example.com"/>
+        <env name="ATOL_CALLBACK_URL" value="https://example.com"/>
+        <env name="ATOL_PHONE" value="+71111111111"/>
+        <env name="ATOL_PAYMENT_ADDRESS" value="test address"/>
+        <env name="ATOL_LOCATION" value="test location"/>
+        <env name="ATOL_SNO" value="osn"/>
+        <env name="ATOL_TOKEN_IS_NOT_ACTIVE" value="9hXZNo8FFAgm0wAu8J_SbI_S0Be6wp8Bfh0M76DpY2Bxzj3HLmRjqHtcbz6W2ZkmGV3gMioyHlyqorD5P7wjy0GrdWENkgGIuCRm86W-TBT1J_py4vr8ZTcRmoV9IDqj"/>
+        <env name="ATOL_TEST_UUID" value="3a4e85e9-33f7-47ad-b066-e13f1788737f"/>
+        <env name="ATOL_DEBUG" value="true"/>
+    </php>
+</phpunit>

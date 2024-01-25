@@ -1,0 +1,14 @@
+### 6.3 Получение результата обработки документа
+## API_atol_online_v4.pdf стр. 14 (Версия сервиса v4 Версия документа 5.15)
+
+# Параметры заголовка и строки запроса:
+# • api_version: версия API сервиса (на данный момент, версия API – «v4»).
+# • group_code: идентификатор группы ККТ.
+# • uuid: уникальный идентификатор, присвоенный документу после выполнения запроса на регистрацию;
+# • token: авторизационный токен.
+
+GET {{host}}/{{group-code}}/report/{{atol-uuid}}
+Content-Type: application/json; charset=utf-8
+Token: {{atol-token}}
+
+>> ./../../data/tmp/http/report_{{atol-uuid}}_{{$isoTimestamp}}.json

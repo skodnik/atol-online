@@ -1,0 +1,522 @@
+{
+    "type": "object",
+    "properties": {
+        "timestamp": {
+            "type": "string"
+        },
+        "external_id": {
+            "type": "string",
+            "maxLength": 128
+        },
+        "service": {
+            "type": "object",
+            "properties": {
+                "callback_url": {
+                    "type": "string",
+                    "maxLength": 256
+                }
+            }
+        },
+        "receipt": {
+            "type": "object",
+            "properties": {
+                "client": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "maxLength": 256
+                        },
+                        "inn": {
+                            "type": "string",
+                            "pattern": "(^[0-9]{10}$)|(^[0-9]{12}$)"
+                        }
+                    },
+                    "anyOf": [
+                        {
+
+                            "properties": {
+                                "email": {
+                                    "type": "string",
+                                    "maxLength": 64
+                                },
+                                "phone": {
+                                    "type": "string",
+                                    "maxLength": 64
+                                }
+                            },
+                            "required": [
+                                "email"
+                            ]
+                        },
+                        {
+                            "properties": {
+                                "email": {
+                                    "type": "string",
+                                    "maxLength": 0
+                                },
+                                "phone": {
+                                    "type": "string",
+                                    "maxLength": 64
+                                }
+                            },
+                            "required": [
+                                "phone"
+                            ]
+                        }
+                    ]
+                },
+                "company": {
+                    "type": "object",
+                    "properties": {
+                        "email": {
+                            "type": "string",
+                            "maxLength": 64
+                        },
+                        "sno": {
+                            "enum": [
+                                "osn",
+                                "usn_income",
+                                "usn_income_outcome",
+                                "envd",
+                                "esn",
+                                "patent"
+                            ]
+                        },
+                        "inn": {
+                            "type": "string",
+                            "maxLength": 12
+                        },
+                        "payment_address": {
+                            "type": "string",
+                            "maxLength": 256
+                        },
+                        "location": {
+                            "type": "string",
+                            "maxLength": 256
+                        }
+                    },
+                    "required": [
+                        "inn",
+                        "payment_address"
+                    ]
+                },
+                "agent_info": {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "enum": [
+                                "bank_paying_agent",
+                                "bank_paying_subagent",
+                                "paying_agent",
+                                "paying_subagent",
+                                "attorney",
+                                "commission_agent",
+                                "another"
+                            ]
+                        },
+                        "paying_agent": {
+                            "type": "object",
+                            "properties": {
+                                "operation": {
+                                    "type": "string"
+                                },
+                                "phones": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/phone_number"
+                                    }
+                                }
+                            }
+                        },
+                        "receive_payments_operator": {
+                            "type": "object",
+                            "properties": {
+                                "phones": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/phone_number"
+                                    }
+                                }
+                            }
+                        },
+                        "money_transfer_operator": {
+                            "type": "object",
+                            "properties": {
+                                "phones": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/phone_number"
+                                    }
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "address": {
+                                    "type": "string"
+                                },
+                                "inn": {
+                                    "type": "string",
+                                    "pattern": "(^[0-9]{10}$)|(^[0-9]{12}$)"
+                                }
+                            }
+                        }
+                    }
+                },
+                "supplier_info": {
+                    "type": "object",
+                    "properties": {
+                        "phones": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/phone_number"
+                            }
+                        }
+                    }
+                },
+                "items": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "price": {
+                                "$ref": "#/definitions/number_price"
+                            },
+                            "quantity": {
+                                "$ref": "#/definitions/number_three_format"
+                            },
+                            "sum": {
+                                "$ref": "#/definitions/sum_number_two_format"
+                            },
+                            "measurement_unit": {
+                                "type": "string",
+                                "maxLength": 16
+                            },
+                            "payment_method": {
+                                "enum": [
+                                    "full_prepayment",
+                                    "prepayment",
+                                    "advance",
+                                    "full_payment",
+                                    "partial_payment",
+                                    "credit",
+                                    "credit_payment"
+                                ]
+                            },
+                            "payment_object": {
+                                "enum": [
+                                    "commodity",
+                                    "excise",
+                                    "job",
+                                    "service",
+                                    "gambling_bet",
+                                    "gambling_prize",
+                                    "lottery",
+                                    "lottery_prize",
+                                    "intellectual_activity",
+                                    "payment",
+                                    "agent_commission",
+                                    "composite",
+                                    "award",
+                                    "another",
+                                    "property_right",
+                                    "non-operating_gain",
+                                    "insurance_premium",
+                                    "sales_tax",
+                                    "resort_fee",
+                                    "deposit",
+                                    "expense",
+                                    "pension_insurance_ip",
+                                    "pension_insurance",
+                                    "medical_insurance_ip",
+                                    "medical_insurance",
+                                    "social_insurance",
+                                    "casino_payment"
+                                ]
+                            },
+                            "nomenclature_code": {
+                                "$ref": "#/definitions/nomenclature_code"
+                            },
+                            "vat": {
+                                "type": "object",
+                                "properties": {
+                                    "type": {
+                                        "enum": [
+                                            "none",
+                                            "vat0",
+                                            "vat10",
+                                            "vat18",
+                                            "vat110",
+                                            "vat118",
+                                            "vat20",
+                                            "vat120"
+                                        ]
+                                    },
+                                    "sum": {
+                                        "$ref": "#/definitions/sum_number_two_format"
+                                    }
+                                }
+                            },
+                            "agent_info": {
+                                "type": "object",
+                                "properties": {
+                                    "type": {
+                                        "enum": [
+                                            "bank_paying_agent",
+                                            "bank_paying_subagent",
+                                            "paying_agent",
+                                            "paying_subagent",
+                                            "attorney",
+                                            "commission_agent",
+                                            "another"
+                                        ]
+                                    },
+                                    "paying_agent": {
+                                        "type": "object",
+                                        "properties": {
+                                            "operation": {
+                                                "type": "string",
+                                                "maxLength": 24
+                                            },
+                                            "phones": {
+                                                "type": "array",
+                                                "items": {
+                                                    "$ref": "#/definitions/phone_number"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "receive_payments_operator": {
+                                        "type": "object",
+                                        "properties": {
+                                            "phones": {
+                                                "type": "array",
+                                                "items": {
+                                                    "$ref": "#/definitions/phone_number"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "money_transfer_operator": {
+                                        "type": "object",
+                                        "properties": {
+                                            "phones": {
+                                                "type": "array",
+                                                "items": {
+                                                    "$ref": "#/definitions/phone_number"
+                                                }
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "address": {
+                                                "type": "string"
+                                            },
+                                            "inn": {
+                                                "type": "string",
+                                                "pattern": "(^[0-9]{10}$)|(^[0-9]{12}$)"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "supplier_info": {
+                                "type": "object",
+                                "properties": {
+                                    "phones": {
+                                        "type": "array",
+                                        "items": {
+                                            "$ref": "#/definitions/phone_number"
+                                        }
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "inn": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "user_data": {
+                                "type": "string",
+                                "maxLength": 64
+                            },
+                            "excise": {
+                                "type": "number",
+                                "minimum": 0
+                            },
+                            "country_code": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 3,
+                                "pattern": "^[0-9]*$"
+                            },
+                            "declaration_number": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 32
+                            }
+                        },
+                        "required": [
+                            "name",
+                            "price",
+                            "quantity",
+                            "sum"
+                        ]
+                    }
+                },
+                "payments": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 10,
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "type": {
+                                "$ref": "#/definitions/type_format"
+                            },
+                            "sum": {
+                                "$ref": "#/definitions/sum_number_two_format"
+                            }
+                        },
+                        "required": [
+                            "type",
+                            "sum"
+                        ]
+                    }
+                },
+                "vats": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 6,
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "type": {
+                                "enum": [
+                                    "none",
+                                    "vat0",
+                                    "vat10",
+                                    "vat18",
+                                    "vat110",
+                                    "vat118",
+                                    "vat20",
+                                    "vat120"
+                                ]
+                            },
+                            "sum": {
+                                "$ref": "#/definitions/sum_number_two_format"
+                            }
+                        }
+                    }
+                },
+                "total": {
+                    "$ref": "#/definitions/number_two_format"
+                },
+                "additional_check_props": {
+                    "type": "string",
+                    "maxLength": 16
+                },
+                "cashier": {
+                    "type": "string",
+                    "maxLength": 64
+                },
+                "additional_user_props": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "maxLength": 64
+                        },
+                        "value": {
+                            "type": "string",
+                            "maxLength": 256
+                        }
+                    },
+                    "required": [
+                        "name",
+                        "value"
+                    ]
+                },
+                "device_number": {
+                    "type": "string",
+                    "maxLength": 20
+                }
+            },
+            "required": [
+                "client",
+                "company",
+                "items",
+                "total",
+                "payments"
+            ]
+        }
+    },
+    "definitions": {
+        "nomenclature_code": {
+            "type": "string",
+            "maxLength": 150,
+            "pattern": "^([a-fA-F0-9]{2}$)|(^([a-fA-F0-9]{2}\\s){1,31}[a-fA-F0-9]{2}|01\\d{14}21[a-zA-Z0-9!\" % &'()*+\\/\\-.,:;=<>?_]{13}([a-zA-Z0-9!\" % &'()*+\\/\\-.,:;=<>?_]{1,119})?|\\d{14}[a-zA-Z0-9!\" %&'()*+\\/\\-.,:;=<>?_]{11}[a-zA-Z0-9!\" %&'()*+\\/\\-.,:;=<>?_]{4}|\\d{13})$"
+        },
+        "sum_number_two_format": {
+            "anyOf": [
+                {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100000000,
+                    "multipleOf": 0.01
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "number_two_format": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100000000,
+            "multipleOf": 0.01
+        },
+        "number_price": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 42949673,
+            "multipleOf": 0.01
+        },
+        "phone_number": {
+            "type": "string",
+            "pattern": "^([^\\s\\\\]{0,17}|\\+[^\\s\\\\]{1,18})$"
+        },
+        "number_three_format": {
+            "type": "number",
+            "minimum": 0.001,
+            "maximum": 100000,
+            "multipleOf": 0.001
+        },
+        "type_format": {
+            "type": "number",
+            "enum": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+            ]
+        }
+    },
+    "required": [
+        "timestamp",
+        "external_id",
+        "receipt"
+    ]
+}

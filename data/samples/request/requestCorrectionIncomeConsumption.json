@@ -1,0 +1,35 @@
+{
+    "external_id": "17052917561851307",
+    "correction": {
+        "company": {
+            "sno": "osn",
+            "inn": "331122667723",
+            "payment_address": "magazin.ru"
+        },
+        "correction_info": {
+            "type": "self",
+            "base_date": "25.07.2017",
+            "base_number": "1175"
+        },
+        "payments": [
+            {
+                "type": 1,
+                "sum": 2000.0
+            }
+        ],
+        "vats": [
+            {
+                "type": "vat20",
+                "sum": 10.0
+            },
+            {
+                "type": "vat10",
+                "sum": 20.0
+            }
+        ]
+    },
+    "service": {
+        "callback_url": "http://testtest"
+    },
+    "timestamp": "29.05.2017 17:56:18"
+}

@@ -1,0 +1,84 @@
+### 6.2 Регистрация документа
+## API_atol_online_v4.pdf стр. 14 (Версия сервиса v4 Версия документа 5.15)
+
+# operation: тип операции, которая должна быть выполнена. Возможные типы операции:
+# sell: чек «Приход»;
+# sell_refund: чек «Возврат прихода»;
+# sell_correction: чек «Коррекция прихода»;
+# buy: чек «Расход»;
+# buy_refund: чек «Возврат расхода»;
+# buy_correction: чек «Коррекция расхода».
+
+@operation=sell
+@sum=300
+@sum-total=600
+@vat-type=vat10
+@vat-sum=54.54
+
+POST {{host}}/{{group-code}}/{{operation}}
+Content-Type: application/json; charset=utf-8
+Token: {{atol-token}}
+
+{
+    "external_id": "{{$uuid}}",
+    "receipt": {
+        "client": {
+            "email": "kkt@kkt.ru"
+        },
+        "company": {
+            "email": "chek@romashka.ru",
+            "sno": "osn",
+            "inn": "5544332219",
+            "payment_address": "http://magazin.ru/"
+        },
+        "items": [
+            {
+                "name": "яйцо Окское куриное С0 белое",
+                "price": {{sum}},
+                "quantity": 1.0,
+                "sum": {{sum}},
+                "measurement_unit": "Упаковка 10 шт.",
+                "payment_method": "full_payment",
+                "payment_object": "commodity",
+                "vat": {
+                    "type": "{{vat-type}}"
+                }
+            },
+            {
+                "name": "яйцо Окское куриное С0 белое",
+                "price": {{sum}},
+                "quantity": 1.0,
+                "sum": {{sum}},
+                "measurement_unit": "Упаковка 10 шт.",
+                "payment_method": "full_payment",
+                "payment_object": "commodity",
+                "vat": {
+                    "type": "{{vat-type}}"
+                }
+            }
+        ],
+        "payments": [
+            {
+                "type": 1,
+                "sum": {{sum-total}}
+            }
+        ],
+        "vats": [
+            {
+                "type": "{{vat-type}}",
+                "sum": {{vat-sum}}
+            }
+        ],
+        "total": {{sum-total}}
+    },
+    "service": {
+        "callback_url": "http://testtest"
+    },
+    "timestamp": "{{$isoTimestamp}}"
+}
+
+> {%
+    client.global.set("atol-uuid", response.body.uuid);
+%}
+
+>> ./../../data/tmp/http/{{operation}}_{{$isoTimestamp}}.json

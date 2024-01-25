@@ -1,0 +1,50 @@
+[
+    {
+        "measurementUnit": "кг",
+        "paymentMethod": "full_payment",
+        "paymentObject": "commodity",
+        "vat": {
+            "type": "vat10"
+        },
+        "name": "колбаса Клинский Брауншвейгская с\\/к в\\/с ",
+        "price": 1000,
+        "sum": 300,
+        "quantity": 0.3
+    },
+    {
+        "measurementUnit": "кг",
+        "paymentMethod": "full_payment",
+        "paymentObject": "commodity",
+        "vat": {
+            "type": "vat0"
+        },
+        "name": "колбаса Клинский Брауншвейгская с\\/к в\\/с ",
+        "price": 1000,
+        "sum": 300,
+        "quantity": 0.3
+    },
+    {
+        "measurementUnit": "кг",
+        "paymentMethod": "full_payment",
+        "paymentObject": "commodity",
+        "vat": {
+            "type": "vat0"
+        },
+        "name": "колбаса Клинский Брауншвейгская с\\/к в\\/с ",
+        "price": 1000,
+        "sum": 300,
+        "quantity": 0.3
+    },
+    {
+        "measurementUnit": "кг",
+        "paymentMethod": "full_payment",
+        "paymentObject": "commodity",
+        "vat": {
+            "type": "vat0"
+        },
+        "name": "колбаса Клинский Брауншвейгская с\\/к в\\/с ",
+        "price": 1000,
+        "sum": 300,
+        "quantity": 0.3
+    }
+]

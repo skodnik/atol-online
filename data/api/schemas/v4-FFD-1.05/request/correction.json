@@ -1,0 +1,183 @@
+{
+    "type": "object",
+    "properties": {
+        "timestamp": {
+            "type": "string"
+        },
+        "external_id": {
+            "type": "string",
+            "maxLength": 128
+        },
+        "service": {
+            "type": "object",
+            "properties": {
+                "callback_url": {
+                    "type": "string",
+                    "maxLength": 256
+                }
+            }
+        },
+        "correction": {
+            "type": "object",
+            "properties": {
+                "company": {
+                    "type": "object",
+                    "properties": {
+                        "sno": {
+                            "enum": [
+                                "osn",
+                                "usn_income",
+                                "usn_income_outcome",
+                                "envd",
+                                "esn",
+                                "patent"
+                            ]
+                        },
+                        "inn": {
+                            "type": "string",
+                            "maxLength": 12
+                        },
+                        "payment_address": {
+                            "type": "string",
+                            "maxLength": 256
+                        },
+                        "location": {
+                            "type": "string",
+                            "maxLength": 256
+                        }
+                    },
+                    "required": [
+                        "inn",
+                        "payment_address"
+                    ]
+                },
+                "cashier": {
+                    "type": "string",
+                    "maxLength": 64
+                },
+                "correction_info": {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "enum": [
+                                "self",
+                                "instruction"
+                            ]
+                        },
+                        "base_date": {
+                            "type": "string"
+                        },
+                        "base_number": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "type",
+                        "base_date",
+                        "base_number"
+                    ]
+                },
+                "payments": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 10,
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "type": {
+                                "$ref": "#/definitions/type_format"
+                            },
+                            "sum": {
+                                "$ref": "#/definitions/sum_number_two_format"
+                            }
+                        },
+                        "required": [
+                            "type",
+                            "sum"
+                        ]
+                    }
+                },
+                "vats": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 6,
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "type": {
+                                "enum": [
+                                    "none",
+                                    "vat0",
+                                    "vat10",
+                                    "vat18",
+                                    "vat110",
+                                    "vat118",
+                                    "vat20",
+                                    "vat120"
+                                ]
+                            },
+                            "sum": {
+                                "$ref": "#/definitions/sum_number_two_format"
+                            }
+                        },
+                        "required": [
+                            "type",
+                            "sum"
+                        ]
+                    }
+                },
+                "device_number": {
+                    "type": "string",
+                    "maxLength": 20
+                }
+            },
+            "required": [
+                "company",
+                "payments",
+                "vats",
+                "correction_info"
+            ]
+        }
+    },
+    "definitions": {
+        "number_two_format": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100000000,
+            "multipleOf": 0.01
+        },
+        "sum_number_two_format": {
+            "anyOf": [
+                {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100000000,
+                    "multipleOf": 0.01
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "type_format": {
+            "type": "number",
+            "enum": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+            ]
+        }
+    },
+    "required": [
+        "timestamp",
+        "external_id",
+        "correction"
+    ]
+}
