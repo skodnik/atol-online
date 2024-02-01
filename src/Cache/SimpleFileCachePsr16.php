@@ -24,7 +24,7 @@ class SimpleFileCachePsr16 implements CacheInterface
         }
     }
 
-    public function get($key, $default = null)
+    public function get($key, $default = null): mixed
     {
         $file = $this->getCacheFile($key);
 
@@ -43,7 +43,7 @@ class SimpleFileCachePsr16 implements CacheInterface
         return $default;
     }
 
-    public function set($key, $value, $ttl = null): void
+    public function set($key, $value, $ttl = null): bool
     {
         $file = $this->getCacheFile($key);
 
@@ -53,19 +53,23 @@ class SimpleFileCachePsr16 implements CacheInterface
         ];
 
         $content = serialize($data);
-        file_put_contents($file, $content, LOCK_EX);
+        return (bool)file_put_contents($file, $content, LOCK_EX);
     }
 
-    public function delete($key): void
+    public function delete($key): bool
     {
         $file = $this->getCacheFile($key);
 
         if (file_exists($file)) {
             unlink($file);
+
+            return true;
         }
+
+        return false;
     }
 
-    public function clear(): void
+    public function clear(): bool
     {
         $files = glob($this->cacheDirectory . DIRECTORY_SEPARATOR . '*');
         foreach ($files as $file) {
@@ -73,6 +77,8 @@ class SimpleFileCachePsr16 implements CacheInterface
                 unlink($file);
             }
         }
+
+        return true;
     }
 
     public function getMultiple($keys, $default = null): array
@@ -85,18 +91,22 @@ class SimpleFileCachePsr16 implements CacheInterface
         return $values;
     }
 
-    public function setMultiple($values, $ttl = null): void
+    public function setMultiple($values, $ttl = null): bool
     {
         foreach ($values as $key => $value) {
             $this->set($key, $value, $ttl);
         }
+
+        return true;
     }
 
-    public function deleteMultiple($keys): void
+    public function deleteMultiple($keys): bool
     {
         foreach ($keys as $key) {
             $this->delete($key);
         }
+
+        return true;
     }
 
     protected function getCacheFile($key): string
