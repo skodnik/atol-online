@@ -56,7 +56,7 @@ trait OperationTrait
     private function retryOperationRequest($request, $body): string
     {
         try {
-            $response = $this->request($request, $body, $this->getToken()->getToken());
+            $response = $this->request($request, $body, $this->getToken(removeTokenFromCache: true)->getToken());
             $body = $response->getBody()->getContents();
         } catch (ApiException $exception) {
             $body = $exception->getResponseBody();
