@@ -38,14 +38,14 @@ class Receipt implements ApiEntityInterface
      *
      * @required false
      */
-    private null|AgentInfo $agentInfo = null;
+    private null|AgentInfo $agent_info = null;
 
     /**
      * Атрибуты поставщика.
      *
      * @required false Поле обязательно, если передан «agent_info».
      */
-    private null|SupplierInfo $supplierInfo = null;
+    private null|SupplierInfo $supplier_info = null;
 
     /**
      * Атрибуты позиций. Ограничение по количеству от 1 до 100.
@@ -92,7 +92,7 @@ class Receipt implements ApiEntityInterface
      * @required false
      * @tagFFD   1192 Дополнительный реквизит чека (БСО)
      */
-    private null|string $additionalCheckProps = null;
+    private null|string $additional_check_props = null;
 
     /**
      * ФИО кассира. Максимальная длина строки – 64 символа.
@@ -108,7 +108,7 @@ class Receipt implements ApiEntityInterface
      * @required false
      * @tagFFD   1084 Дополнительный реквизит пользователя
      */
-    private null|AdditionalUserProps $additionalUserProps = null;
+    private null|AdditionalUserProps $additional_user_props = null;
 
     /**
      * Заводской номер автоматического устройства для расчетов.
@@ -118,7 +118,7 @@ class Receipt implements ApiEntityInterface
      * @required false
      * @tagFFD   1036 № автомата
      */
-    private null|string $deviceNumber = null;
+    private null|string $device_number = null;
 
     /**
      * Рассчитывает и устанавливает сумму чека по всем позициям.
@@ -198,24 +198,24 @@ class Receipt implements ApiEntityInterface
 
     public function getAgentInfo(): null|AgentInfo
     {
-        return $this->agentInfo;
+        return $this->agent_info;
     }
 
-    public function setAgentInfo(null|AgentInfo $agentInfo): Receipt
+    public function setAgentInfo(null|AgentInfo $agent_info): Receipt
     {
-        $this->agentInfo = $agentInfo;
+        $this->agent_info = $agent_info;
 
         return $this;
     }
 
     public function getSupplierInfo(): null|SupplierInfo
     {
-        return $this->supplierInfo;
+        return $this->supplier_info;
     }
 
-    public function setSupplierInfo(null|SupplierInfo $supplierInfo): Receipt
+    public function setSupplierInfo(null|SupplierInfo $supplier_info): Receipt
     {
-        $this->supplierInfo = $supplierInfo;
+        $this->supplier_info = $supplier_info;
 
         return $this;
     }
@@ -289,23 +289,23 @@ class Receipt implements ApiEntityInterface
         return $this;
     }
 
-    public function getAdditionalCheckProps(): null|string
+    public function getAdditionalCheckprops(): null|string
     {
-        return $this->additionalCheckProps;
+        return $this->additional_check_props;
     }
 
     /**
      * @throws ApiExceptionWrongStringLength
      */
-    public function setAdditionalCheckProps(null|string $additionalCheckProps): Receipt
+    public function setAdditionalCheckprops(null|string $additional_check_props): Receipt
     {
-        if (mb_strlen($additionalCheckProps) > 16) {
+        if (mb_strlen($additional_check_props) > 16) {
             throw new ApiExceptionWrongStringLength(
                 message: 'AdditionalCheckProps is too long, acceptable max 16 characters'
             );
         }
 
-        $this->additionalCheckProps = $additionalCheckProps;
+        $this->additional_check_props = $additional_check_props;
 
         return $this;
     }
@@ -329,33 +329,33 @@ class Receipt implements ApiEntityInterface
         return $this;
     }
 
-    public function getAdditionalUserProps(): null|AdditionalUserProps
+    public function getAdditionalUserprops(): null|AdditionalUserProps
     {
-        return $this->additionalUserProps;
+        return $this->additional_user_props;
     }
 
-    public function setAdditionalUserProps(null|AdditionalUserProps $additionalUserProps): Receipt
+    public function setAdditionalUserprops(null|AdditionalUserProps $additional_user_props): Receipt
     {
-        $this->additionalUserProps = $additionalUserProps;
+        $this->additional_user_props = $additional_user_props;
 
         return $this;
     }
 
     public function getDeviceNumber(): null|string
     {
-        return $this->deviceNumber;
+        return $this->device_number;
     }
 
     /**
      * @throws ApiExceptionWrongStringLength
      */
-    public function setDeviceNumber(null|string $deviceNumber): Receipt
+    public function setDeviceNumber(null|string $device_number): Receipt
     {
-        if (mb_strlen($deviceNumber) > 20 || mb_strlen($deviceNumber) < 1) {
+        if (mb_strlen($device_number) > 20 || mb_strlen($device_number) < 1) {
             throw new ApiExceptionWrongStringLength(message: 'DeviceNumber is too long, acceptable max 20 characters');
         }
 
-        $this->deviceNumber = $deviceNumber;
+        $this->device_number = $device_number;
 
         return $this;
     }

@@ -3,7 +3,7 @@
     "price": 1000.00,
     "quantity": 0.3,
     "sum": 300.00,
-    "measurementUnit": "кг",
-    "paymentMethod": "full_payment",
-    "paymentObject": "commodity"
+    "measurement_unit": "кг",
+    "payment_method": "full_payment",
+    "payment_object": "commodity"
 }

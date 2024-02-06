@@ -39,7 +39,7 @@ class Item implements ApiEntityInterface
      * @required false
      * @tagFFD   1197 Единица измерения предмета расчета
      */
-    private null|string $measurementUnit = null;
+    private null|string $measurement_unit = null;
 
     /**
      * Код товара в шестнадцатеричном представлении с пробелами.
@@ -48,7 +48,7 @@ class Item implements ApiEntityInterface
      * @required false
      * @tagFFD   1162 Код товара
      */
-    private null|string $nomenclatureCode = null;
+    private null|string $nomenclature_code = null;
 
     /**
      * Признак способа расчёта.
@@ -56,7 +56,7 @@ class Item implements ApiEntityInterface
      * @required false Если признак не передан, по умолчанию используется значение «full_prepayment».
      * @tagFFD   1214 Признак способа расчета
      */
-    private null|PaymentMethod $paymentMethod = null;
+    private null|PaymentMethod $payment_method = null;
 
     /**
      * Признак предмета расчёта.
@@ -64,7 +64,7 @@ class Item implements ApiEntityInterface
      * @required false Нет Если признак не передан, по умолчанию используется значение «commodity».
      * @tagFFD   1212 Признак предмета расчета
      */
-    private null|PaymentObject $paymentObject = null;
+    private null|PaymentObject $payment_object = null;
 
     /**
      * Атрибуты налога на позицию. Необходимо передать либо сумму налога на позицию, либо сумму налога на чек.
@@ -79,35 +79,35 @@ class Item implements ApiEntityInterface
      *
      * @required false
      */
-    private null|AgentInfo $agentInfo = null;
+    private null|AgentInfo $agent_info = null;
 
     /**
      * Атрибуты платежного агента.
      *
      * @required false
      */
-    private null|PayingAgent $payingAgent = null;
+    private null|PayingAgent $paying_agent = null;
 
     /**
      * Атрибуты оператора по приему платежей.
      *
      * @required false
      */
-    private null|ReceivePaymentsOperator $receivePaymentsOperator = null;
+    private null|ReceivePaymentsOperator $receive_payments_operator = null;
 
     /**
      * Атрибуты оператора перевода.
      *
      * @required false
      */
-    private null|MoneyTransferOperator $moneyTransferOperator = null;
+    private null|MoneyTransferOperator $money_transfer_operator = null;
 
     /**
      * Атрибуты поставщика.
      *
      * @required false Поле обязательно, если передан «agent_info».
      */
-    private null|SupplierInfo $supplierInfo = null;
+    private null|SupplierInfo $supplier_info = null;
 
     /**
      * Дополнительный реквизит предмета расчета.
@@ -116,7 +116,7 @@ class Item implements ApiEntityInterface
      * @required false
      * @tagFFD   1191 Дополнительный реквизит предмета расчета
      */
-    private null|string $userData = null;
+    private null|string $user_data = null;
 
     /**
      * Цифровой код страны происхождения товара • ровно 3 цифры.
@@ -126,7 +126,7 @@ class Item implements ApiEntityInterface
      * @tagFFD   1230 Цифровой код страны происхождения товара в соответствии с Общероссийским классификатором стран
      *           мира
      */
-    private null|string $countryCode = null;
+    private null|string $country_code = null;
 
     /**
      * Номер таможенной декларации в соответствии с форматом, установленным приказом ФНС России от
@@ -142,7 +142,7 @@ class Item implements ApiEntityInterface
      * @required false
      * @tagFFD   1231
      */
-    private null|string $declarationNumber = null;
+    private null|string $declaration_number = null;
 
     /**
      * @throws ApiExceptionWrongStringLength
@@ -160,37 +160,37 @@ class Item implements ApiEntityInterface
 
     public function getMeasurementUnit(): null|string
     {
-        return $this->measurementUnit;
+        return $this->measurement_unit;
     }
 
     /**
      * @throws ApiExceptionOutOfRangeNumber
      */
-    public function setMeasurementUnit(null|string $measurementUnit): Item
+    public function setMeasurementUnit(null|string $measurement_unit): Item
     {
-        if (mb_strlen($measurementUnit) > 16 || mb_strlen($measurementUnit) < 0) {
+        if (mb_strlen($measurement_unit) > 16 || mb_strlen($measurement_unit) < 0) {
             throw new ApiExceptionOutOfRangeNumber(message: 'MeasurementUnit wrong length, max: 16, min: 0');
         }
 
-        $this->measurementUnit = $measurementUnit;
+        $this->measurement_unit = $measurement_unit;
 
         return $this;
     }
 
     public function getNomenclatureCode(): null|string
     {
-        return $this->nomenclatureCode;
+        return $this->nomenclature_code;
     }
 
     /**
      * @throws ApiExceptionWrongNomenclatureCode
      */
-    public function setNomenclatureCode(null|string $nomenclatureCode): static
+    public function setNomenclatureCode(null|string $nomenclature_code): static
     {
         if (NomenclatureCodeHelper::isHexadecimalAndRightLength(
-            $nomenclatureCode
-        ) || NomenclatureCodeHelper::isGS1DataMatrixProductCode($nomenclatureCode)) {
-            $this->nomenclatureCode = $nomenclatureCode;
+            $nomenclature_code
+        ) || NomenclatureCodeHelper::isGS1DataMatrixProductCode($nomenclature_code)) {
+            $this->nomenclature_code = $nomenclature_code;
 
             return $this;
         }
@@ -200,24 +200,24 @@ class Item implements ApiEntityInterface
 
     public function getPaymentMethod(): null|PaymentMethod
     {
-        return $this->paymentMethod;
+        return $this->payment_method;
     }
 
-    public function setPaymentMethod(null|PaymentMethod $paymentMethod): static
+    public function setPaymentMethod(null|PaymentMethod $payment_method): static
     {
-        $this->paymentMethod = $paymentMethod;
+        $this->payment_method = $payment_method;
 
         return $this;
     }
 
     public function getPaymentObject(): null|PaymentObject
     {
-        return $this->paymentObject;
+        return $this->payment_object;
     }
 
-    public function setPaymentObject(null|PaymentObject $paymentObject): static
+    public function setPaymentObject(null|PaymentObject $payment_object): static
     {
-        $this->paymentObject = $paymentObject;
+        $this->payment_object = $payment_object;
 
         return $this;
     }
@@ -236,105 +236,105 @@ class Item implements ApiEntityInterface
 
     public function getAgentInfo(): null|AgentInfo
     {
-        return $this->agentInfo;
+        return $this->agent_info;
     }
 
-    public function setAgentInfo(null|AgentInfo $agentInfo): static
+    public function setAgentInfo(null|AgentInfo $agent_info): static
     {
-        $this->agentInfo = $agentInfo;
+        $this->agent_info = $agent_info;
 
         return $this;
     }
 
     public function getPayingAgent(): null|PayingAgent
     {
-        return $this->payingAgent;
+        return $this->paying_agent;
     }
 
-    public function setPayingAgent(null|PayingAgent $payingAgent): Item
+    public function setPayingAgent(null|PayingAgent $paying_agent): Item
     {
-        $this->payingAgent = $payingAgent;
+        $this->paying_agent = $paying_agent;
 
         return $this;
     }
 
-    public function getReceivePaymentsOperator(): null|ReceivePaymentsOperator
+    public function getReceivePaymentsoperator(): null|ReceivePaymentsOperator
     {
-        return $this->receivePaymentsOperator;
+        return $this->receive_payments_operator;
     }
 
-    public function setReceivePaymentsOperator(null|ReceivePaymentsOperator $receivePaymentsOperator): Item
+    public function setReceivePaymentsoperator(null|ReceivePaymentsOperator $receive_payments_operator): Item
     {
-        $this->receivePaymentsOperator = $receivePaymentsOperator;
+        $this->receive_payments_operator = $receive_payments_operator;
 
         return $this;
     }
 
-    public function getMoneyTransferOperator(): null|MoneyTransferOperator
+    public function getMoneyTransferoperator(): null|MoneyTransferOperator
     {
-        return $this->moneyTransferOperator;
+        return $this->money_transfer_operator;
     }
 
-    public function setMoneyTransferOperator(null|MoneyTransferOperator $moneyTransferOperator): Item
+    public function setMoneyTransferoperator(null|MoneyTransferOperator $money_transfer_operator): Item
     {
-        $this->moneyTransferOperator = $moneyTransferOperator;
+        $this->money_transfer_operator = $money_transfer_operator;
 
         return $this;
     }
 
     public function getUserData(): null|string
     {
-        return $this->userData;
+        return $this->user_data;
     }
 
     /**
      * @throws ApiExceptionWrongStringLength
      */
-    public function setUserData(null|string $userData): Item
+    public function setUserData(null|string $user_data): Item
     {
-        if (mb_strlen($userData) > 64) {
+        if (mb_strlen($user_data) > 64) {
             throw new ApiExceptionWrongStringLength(message: 'Name is too long, acceptable max 64 characters');
         }
 
-        $this->userData = $userData;
+        $this->user_data = $user_data;
 
         return $this;
     }
 
     public function getCountryCode(): null|string
     {
-        return $this->countryCode;
+        return $this->country_code;
     }
 
     /**
      * @throws ApiExceptionWrongStringLength
      */
-    public function setCountryCode(null|string $countryCode): Item
+    public function setCountryCode(null|string $country_code): Item
     {
-        if (mb_strlen($countryCode) !== 3) {
+        if (mb_strlen($country_code) !== 3) {
             throw new ApiExceptionWrongStringLength(message: 'CountryCode wrong');
         }
 
-        $this->countryCode = $countryCode;
+        $this->country_code = $country_code;
 
         return $this;
     }
 
     public function getDeclarationNumber(): null|string
     {
-        return $this->declarationNumber;
+        return $this->declaration_number;
     }
 
     /**
      * @throws ApiExceptionWrongStringLength
      */
-    public function setDeclarationNumber(null|string $declarationNumber): Item
+    public function setDeclarationNumber(null|string $declaration_number): Item
     {
-        if (mb_strlen($declarationNumber) > 32) {
+        if (mb_strlen($declaration_number) > 32) {
             throw new ApiExceptionWrongStringLength(message: 'DeclarationNumber is too long, max: 32 characters');
         }
 
-        $this->declarationNumber = $declarationNumber;
+        $this->declaration_number = $declaration_number;
 
         return $this;
     }

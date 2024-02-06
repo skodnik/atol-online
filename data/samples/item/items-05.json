@@ -1,8 +1,8 @@
 [
     {
-        "measurementUnit": "кг",
-        "paymentMethod": "full_payment",
-        "paymentObject": "commodity",
+        "measurement_unit": "кг",
+        "payment_method": "full_payment",
+        "payment_object": "commodity",
         "vat": {
             "type": "vat10"
         },
@@ -12,9 +12,9 @@
         "quantity": 0.3
     },
     {
-        "measurementUnit": "кг",
-        "paymentMethod": "full_payment",
-        "paymentObject": "commodity",
+        "measurement_unit": "кг",
+        "payment_method": "full_payment",
+        "payment_object": "commodity",
         "vat": {
             "type": "vat10"
         },
@@ -24,9 +24,9 @@
         "quantity": 0.3
     },
     {
-        "measurementUnit": "кг",
-        "paymentMethod": "full_payment",
-        "paymentObject": "commodity",
+        "measurement_unit": "кг",
+        "payment_method": "full_payment",
+        "payment_object": "commodity",
         "vat": {
             "type": "vat10"
         },
@@ -36,9 +36,9 @@
         "quantity": 0.3
     },
     {
-        "measurementUnit": "кг",
-        "paymentMethod": "full_payment",
-        "paymentObject": "commodity",
+        "measurement_unit": "кг",
+        "payment_method": "full_payment",
+        "payment_object": "commodity",
         "vat": {
             "type": "vat10"
         },
@@ -48,9 +48,9 @@
         "quantity": 0.3
     },
     {
-        "measurementUnit": "кг",
-        "paymentMethod": "full_payment",
-        "paymentObject": "commodity",
+        "measurement_unit": "кг",
+        "payment_method": "full_payment",
+        "payment_object": "commodity",
         "vat": {
             "type": "vat20"
         },
