@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        os: [ ubuntu-22.04 ]
+        os: [ ubuntu-22.04, ubuntu-24.04 ]
         php: [ 8.1, 8.2, 8.3 ]
 
     name: PHP ${{ matrix.php }} on ${{ matrix.os }}
@@ -37,7 +37,7 @@ jobs:
         run: composer validate --strict
 
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progress
+        run: composer install --no-progress
 
       - name: Run phpunit unit test suite
         run: composer tests-unit
