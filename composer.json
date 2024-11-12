@@ -1,65 +1,66 @@
 {
-  "name": "vlsv/atol-online",
-  "description": "Http клиент для работы с API АТОЛ Онлайн. 54–ФЗ.",
-  "keywords": [
-    "rest",
-    "api",
-    "atol",
-    "atol-online",
-    "atol online",
-    "fiscalization",
-    "атол",
-    "атол-онлайн",
-    "атол онлайн",
-    "fiscalization"
-  ],
-  "homepage": "https://github.com/skodnik/atol-online",
-  "readme": "https://github.com/skodnik/atol-online/blob/main/README.md",
-  "type": "library",
-  "license": "GPL-3.0-or-later",
-  "autoload": {
-    "psr-4": {
-      "Vlsv\\AtolOnline\\": "src/"
+    "name": "vlsv/atol-online",
+    "description": "Http клиент для работы с API АТОЛ Онлайн. 54–ФЗ.",
+    "keywords": [
+        "rest",
+        "api",
+        "atol",
+        "atol-online",
+        "atol online",
+        "fiscalization",
+        "атол",
+        "атол-онлайн",
+        "атол онлайн",
+        "fiscalization"
+    ],
+    "homepage": "https://github.com/skodnik/atol-online",
+    "readme": "https://github.com/skodnik/atol-online/blob/main/README.md",
+    "type": "library",
+    "license": "GPL-3.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "Vlsv\\AtolOnline\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Vlsv\\AtolOnline\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Evgeny Vlasov",
+            "email": "vlasov.evgeny@gmail.com",
+            "homepage": "https://vlsv.me/"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^8.1",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "guzzlehttp/guzzle": "^7.4",
+        "symfony/serializer-pack": "^1.1",
+        "symfony/validator": "^6.0",
+        "psr/simple-cache": "^3.0",
+        "phpstan/phpdoc-parser": "^1.33"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "friendsofphp/php-cs-fixer": "^3.13",
+        "laravel/pint": "^0.2.3"
+    },
+    "scripts": {
+        "tests": "./vendor/bin/phpunit --testdox",
+        "tests-unit": "./vendor/bin/phpunit --group unit --testdox",
+        "tests-feature": "./vendor/bin/phpunit --group feature --testdox",
+        "tests-integration": "./vendor/bin/phpunit --group integration --testdox",
+        "csfix-dry": "PHP_CS_FIXER_IGNORE_ENV=1 ./vendor/bin/php-cs-fixer fix --allow-risky=yes --dry-run --verbose",
+        "csfix-fix": "PHP_CS_FIXER_IGNORE_ENV=1 ./vendor/bin/php-cs-fixer fix --allow-risky=yes --verbose",
+        "pint-test": "./vendor/bin/pint --test --verbose",
+        "pint-fix": "./vendor/bin/pint --verbose",
+        "dry": "composer csfix-dry ; composer pint-test",
+        "fix": "composer csfix-fix ; composer pint-fix"
     }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Vlsv\\AtolOnline\\Tests\\": "tests/"
-    }
-  },
-  "authors": [
-    {
-      "name": "Evgeny Vlasov",
-      "email": "vlasov.evgeny@gmail.com",
-      "homepage": "https://vlsv.me/"
-    }
-  ],
-  "minimum-stability": "stable",
-  "require": {
-    "php": "^8.1",
-    "ext-curl": "*",
-    "ext-json": "*",
-    "ext-mbstring": "*",
-    "guzzlehttp/guzzle": "^7.4",
-    "symfony/serializer-pack": "^1.1",
-    "symfony/validator": "^6.0",
-    "psr/simple-cache": "^3.0"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^9.5",
-    "friendsofphp/php-cs-fixer": "^3.13",
-    "laravel/pint": "^0.2.3"
-  },
-  "scripts": {
-    "tests": "./vendor/bin/phpunit --testdox",
-    "tests-unit": "./vendor/bin/phpunit --group unit --testdox",
-    "tests-feature": "./vendor/bin/phpunit --group feature --testdox",
-    "tests-integration": "./vendor/bin/phpunit --group integration --testdox",
-    "csfix-dry": "PHP_CS_FIXER_IGNORE_ENV=1 ./vendor/bin/php-cs-fixer fix --allow-risky=yes --dry-run --verbose",
-    "csfix-fix": "PHP_CS_FIXER_IGNORE_ENV=1 ./vendor/bin/php-cs-fixer fix --allow-risky=yes --verbose",
-    "pint-test": "./vendor/bin/pint --test --verbose",
-    "pint-fix": "./vendor/bin/pint --verbose",
-    "dry": "composer csfix-dry ; composer pint-test",
-    "fix": "composer csfix-fix ; composer pint-fix"
-  }
 }
