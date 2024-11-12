@@ -20,6 +20,7 @@
         <env name="ATOL_SERVICE_VERSION" value="v4"/>
         <env name="ATOL_COMPANY" value="АТОЛ"/>
         <env name="ATOL_INN" value="5544332219"/>
+        <env name="ATOL_ADDR" value=""/>
         <env name="ATOL_GROUP_CODE" value="v4-online-atol-ru_4179"/>
         <env name="ATOL_LOGIN" value="v4-online-atol-ru"/>
         <env name="ATOL_PASSWORD" value="iGFFuihss"/>

@@ -15,6 +15,7 @@ class AtolAccount
         protected string $serviceVersion,
         protected string $company,
         protected string $inn,
+        protected string $addr,
         protected string $groupCode,
         protected string $login,
         protected string $password,
@@ -80,6 +81,13 @@ class AtolAccount
     public function getInn(): string
     {
         return $this->inn;
+    }
+
+    public function setAddr(string $addr): AtolAccount
+    {
+        $this->addr = $addr;
+
+        return $this;
     }
 
     public function getAddr(): string

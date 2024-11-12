@@ -23,6 +23,7 @@ class AtolAccountTest extends TestCase
         $this->assertEquals(getenv('ATOL_SERVICE_VERSION'), $atolAccount->getServiceVersion());
         $this->assertEquals(getenv('ATOL_COMPANY'), $atolAccount->getCompany());
         $this->assertEquals(getenv('ATOL_INN'), $atolAccount->getInn());
+        $this->assertEquals(getenv('ATOL_ADDR'), $atolAccount->getAddr());
         $this->assertEquals(getenv('ATOL_GROUP_CODE'), $atolAccount->getGroupCode());
         $this->assertEquals(getenv('ATOL_LOGIN'), $atolAccount->getLogin());
         $this->assertEquals(getenv('ATOL_PASSWORD'), $atolAccount->getPassword());

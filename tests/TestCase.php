@@ -28,6 +28,7 @@ class TestCase extends PHPUnitTestCase
             serviceVersion: getenv('ATOL_SERVICE_VERSION'),
             company: getenv('ATOL_COMPANY'),
             inn: getenv('ATOL_INN'),
+            addr: getenv('ATOL_ADDR'),
             groupCode: getenv('ATOL_GROUP_CODE'),
             login: getenv('ATOL_LOGIN'),
             password: getenv('ATOL_PASSWORD'),
