@@ -33,6 +33,7 @@ composer require vlsv/atol-online
 4. [Регистрация документа](docs/document-registration.md)
 5. [Получение результата обработки документа](docs/report.md)
 6. [Debug](docs/debug.md)
+7. [Sandbox](docs/sandbox.md)
 
 Больше примеров использования в тестах.
 
