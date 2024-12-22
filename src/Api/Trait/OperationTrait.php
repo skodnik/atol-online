@@ -26,7 +26,7 @@ trait OperationTrait
         OperationType $operationType,
         Request $body,
         bool $updateTokenIfExpired = true,
-        string $token = null,
+        null|string $token = null,
     ): Response {
         $request = new \GuzzleHttp\Psr7\Request(
             method: 'POST',

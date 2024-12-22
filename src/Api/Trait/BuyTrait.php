@@ -22,7 +22,7 @@ trait BuyTrait
      * @see API_atol_online_v4.pdf (Версия сервиса v4, Версия документа 5.15) стр. 14
      * @throws InvalidArgumentException
      */
-    public function buy(Request $body, string $token = null, bool $updateTokenIfExpired = true): Response
+    public function buy(Request $body, null|string $token = null, bool $updateTokenIfExpired = true): Response
     {
         return $this->operation(
             operationType: OperationType::BUY,

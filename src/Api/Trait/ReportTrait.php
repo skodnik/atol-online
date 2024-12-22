@@ -19,7 +19,7 @@ trait ReportTrait
     /**
      * @throws InvalidArgumentException
      */
-    public function report(string $uuid, string $token = null, bool $updateTokenIfExpired = true): Report
+    public function report(string $uuid, null|string $token = null, bool $updateTokenIfExpired = true): Report
     {
         $resourcePath = '/report/' . $uuid;
 

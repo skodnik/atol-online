@@ -22,7 +22,7 @@ trait SellTrait
      * @see API_atol_online_v4.pdf (Версия сервиса v4, Версия документа 5.15) стр. 14
      * @throws InvalidArgumentException
      */
-    public function sell(Request $body, string $token = null, bool $updateTokenIfExpired = true): Response
+    public function sell(Request $body, null|string $token = null, bool $updateTokenIfExpired = true): Response
     {
         return $this->operation(
             operationType: OperationType::SELL,
