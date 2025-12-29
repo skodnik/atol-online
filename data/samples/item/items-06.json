@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Тестовый товар с НДС 22%",
+    "price": 300,
+    "quantity": 1,
+    "sum": 300,
+    "measurement_unit": "шт",
+    "payment_method": "full_prepayment",
+    "payment_object": "commodity",
+    "vat": {
+      "type": "vat22"
+    }
+  },
+  {
+    "name": "Тестовый товар с НДС 10%",
+    "price": 100,
+    "quantity": 1,
+    "sum": 100,
+    "measurement_unit": "шт",
+    "payment_method": "full_prepayment",
+    "payment_object": "commodity",
+    "vat": {
+      "type": "vat10"
+    }
+  }
+]

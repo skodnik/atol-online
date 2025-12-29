@@ -12,20 +12,21 @@ use Vlsv\AtolOnline\Entity\Enum\VatType;
  */
 class VatHelper
 {
-    public static function calculateSumByVat(VatType $type, int|float $sum): float|int
+    public static function calculateSumByVat(VatType $type, int|float $sum, bool $isVatIncluded = true): float|int
     {
         $vatPercentage = match ($type) {
             VatType::NONE, VatType::VAT0 => [0, 100],
+            VatType::VAT5 => [5, 100],
+            VatType::VAT7 => [7, 100],
             VatType::VAT10 => [10, 100],
-            VatType::VAT18 => [18, 100], // Deprecated 01.04.2019
             VatType::VAT20 => [20, 100],
-            VatType::VAT110 => [10, 110],
-            VatType::VAT118 => [18, 118], // Deprecated 01.04.2019
-            VatType::VAT120 => [20, 120],
+            VatType::VAT22 => [22, 100],
             default => [0, 100],
         };
 
-        $vat = $sum / ($vatPercentage[0] + $vatPercentage[1]) * $vatPercentage[0];
+        $vat = $isVatIncluded
+            ? $sum / ($vatPercentage[0] + $vatPercentage[1]) * $vatPercentage[0]
+            : $sum / $vatPercentage[1] * $vatPercentage[0];
 
         return round($vat, 2);
     }

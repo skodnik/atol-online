@@ -40,6 +40,10 @@ class CalculateVatsTest extends TestCase
                 [VatType::VAT10->value => 109.08, VatType::VAT20->value => 50.0],
                 (new ItemsFactory())->fromJson('items-05.json'),
             ],
+            [
+                [VatType::VAT10->value => 9.09, VatType::VAT22->value => 54.10],
+                (new ItemsFactory())->fromJson('items-06.json'),
+            ],
         ];
     }
 
